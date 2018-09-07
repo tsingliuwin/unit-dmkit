@@ -4,6 +4,11 @@ DM Kit作为UNIT的开源对话管理模块，可以无缝对接UNIT的理解能
 
 ## 快速开始
 
+## 测试环境
+
+ubuntu 18.04
+python 3.6
+
 ### 编译DM Kit
 
 DM Kit基于[brpc](https://github.com/brpc/brpc)开发并提供HTTP服务，支持MacOS，Ubuntu，Centos等系统环境。在编译DM Kit之前，需要先安装依赖并下载编译brpc：

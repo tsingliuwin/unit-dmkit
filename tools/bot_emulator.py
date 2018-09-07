@@ -40,8 +40,8 @@ def main(bot_id, token):
     user_id = str(random.randint(1, 100000))
     session = ""
     while True:
-        print "-----------------------------------------------------------------"
-        user_input = raw_input("input:\n")
+        print("-----------------------------------------------------------------")
+        user_input = input("input:\n")
         user_input = user_input.strip()
         if not user_input:
             continue
@@ -65,10 +65,10 @@ def main(bot_id, token):
             "bot_session": session
         }
         obj = requests.post(url, data=json.dumps(payload), headers=json_header).json()
-        print "BOT:"
+        print("BOT:")
         # Not a valid response.
         if obj['error_code'] != 0:
-            print "ERROR: %s" % obj['error_msg']
+            print("ERROR: %s" % obj['error_msg'])
             continue
         
         session = obj['result']['bot_session']
@@ -76,22 +76,22 @@ def main(bot_id, token):
         action = response['action_list'][0]
         # For clarify or failed responses which dmkit does not take actions.
         if action['type'] != 'event':
-            print action['say']
+            print(action['say'])
             continue
         
         custom_reply = json.loads(action['custom_reply'])
         if custom_reply['event_name'] != 'DM_RESULT':
-            print 'ERROR:unknown event name %s' % custom_reply['event_name']
+            print('ERROR:unknown event name %s' % custom_reply['event_name'])
             continue
         # This is a dmkit response
         dm_result = json.loads(custom_reply['result'])
         for item in dm_result['result']:
             if item['type'] == 'tts':
-                print item['value']
+                print(item['value'])
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print "Usage: %s %s %s" % (sys.argv[0], "[bot_id]", "[access_token]")
+        print("Usage: %s %s %s" % (sys.argv[0], "[bot_id]", "[access_token]"))
     else:
         main(sys.argv[1], sys.argv[2])

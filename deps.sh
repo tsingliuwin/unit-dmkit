@@ -26,7 +26,8 @@ elif [ $OS = ubuntu ]; then
         g++ \
         make \
         libssl-dev \
-        realpath \
+        manpages-pl \
+        manpages-fr-extra \
         libgflags-dev \
         libprotobuf-dev \
         libprotoc-dev \
